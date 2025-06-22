@@ -16,6 +16,9 @@ import MedicalFilesList from './components/MedicalFiles/MedicalFilesList';
 import ConsultationHistoryPage from './components/ConsultationHistory/ConsultationHistoryPage';
 import PrescriptionsPage from './components/Prescriptions/PrescriptionsPage';
 import LabResultsPage from './components/LabResults/LabResultsPage';
+import RadiologyPage from './components/Radiology/RadiologyPage';
+import CaseImagesPage from './components/CaseImages/CaseImagesPage';
+import BillingPage from './components/Billing/BillingPage';
 
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { isAuthenticated } = useAuth();
@@ -135,10 +138,7 @@ const AppRoutes: React.FC = () => {
           element={
             <ProtectedRoute>
               <Layout>
-                <div className="p-6">
-                  <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">Radiologie</h1>
-                  <p className="text-gray-600 dark:text-gray-400 mt-2">Section en cours de développement...</p>
-                </div>
+                <RadiologyPage />
               </Layout>
             </ProtectedRoute>
           }
@@ -148,10 +148,7 @@ const AppRoutes: React.FC = () => {
           element={
             <ProtectedRoute>
               <Layout>
-                <div className="p-6">
-                  <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">Images de Cas</h1>
-                  <p className="text-gray-600 dark:text-gray-400 mt-2">Section en cours de développement...</p>
-                </div>
+                <CaseImagesPage />
               </Layout>
             </ProtectedRoute>
           }
@@ -161,10 +158,7 @@ const AppRoutes: React.FC = () => {
           element={
             <ProtectedRoute>
               <Layout>
-                <div className="p-6">
-                  <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">Facturation</h1>
-                  <p className="text-gray-600 dark:text-gray-400 mt-2">Section en cours de développement...</p>
-                </div>
+                <BillingPage />
               </Layout>
             </ProtectedRoute>
           }

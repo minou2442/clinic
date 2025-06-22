@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { 
   Menu, 
@@ -21,8 +21,16 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
   const { user, logout } = useAuth();
   const { isDark, toggleTheme } = useTheme();
-  const currentDate = new Date();
+  const [currentTime, setCurrentTime] = useState(new Date());
   
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   const formatDate = (date: Date) => {
     return date.toLocaleDateString('fr-FR', {
       weekday: 'long',
@@ -57,11 +65,11 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
           <div className="hidden md:flex items-center space-x-6">
             <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-300">
               <Calendar className="w-4 h-4" />
-              <span className="text-sm font-medium">{formatDate(currentDate)}</span>
+              <span className="text-sm font-medium">{formatDate(currentTime)}</span>
             </div>
             <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-300">
               <Clock className="w-4 h-4" />
-              <span className="text-sm font-medium">{formatTime(currentDate)}</span>
+              <span className="text-sm font-medium">{formatTime(currentTime)}</span>
             </div>
           </div>
         </div>
@@ -79,6 +87,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
           <button
             onClick={toggleTheme}
             className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
+            title={isDark ? 'Mode clair' : 'Mode sombre'}
           >
             {isDark ? (
               <Sun className="w-5 h-5 text-yellow-500" />
