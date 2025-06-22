@@ -1,26 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Plus, 
-  Search, 
-  Filter, 
-  DollarSign,
-  Calendar,
-  User,
-  FileText,
-  Clock,
-  CheckCircle,
-  XCircle,
-  AlertTriangle,
-  Eye,
-  Edit,
-  Download,
-  Print,
-  CreditCard,
-  Banknote,
-  Receipt,
-  TrendingUp
-} from 'lucide-react';
+import { Plus, Search, Filter, DollarSign, Calendar, User, FileText, Clock, CheckCircle, XCircle, AlertTriangle, Eye, Edit, Download, Printer as Print, CreditCard, Banknote, Receipt, TrendingUp } from 'lucide-react';
 import { Facture, Payment } from '../../types';
 import { useAuth } from '../../contexts/AuthContext';
 
